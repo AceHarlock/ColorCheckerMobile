@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--begin::Head-->
+	<head>
+		<title>Colors</title>
+		<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
+		<meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8" />
+		<!-- <meta property="og:locale" content="en_US" />
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="Metronic - Bootstrap 5 HTML, VueJS, React, Angular &amp; Laravel Admin Dashboard Theme" />
+		<meta property="og:url" content="https://keenthemes.com/metronic" />
+		<meta property="og:site_name" content="Keenthemes | Metronic" /> -->
+		<!-- <link rel="canonical" href="https://preview.keenthemes.com/metronic8" /> -->
+		<link rel="shortcut icon" href="assets/images/favicon.ico" />
+		<!--begin::Fonts-->
+		<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" /> -->
+		<!--end::Fonts-->
+		<!--begin::Global Stylesheets Bundle(used by all pages)-->
+		<link href="assets/css/mine.css" rel="stylesheet" type="text/css" />
+
+		<link href="assets/css/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Global Stylesheets Bundle-->
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+		<!--begin::Main-->
+		<!--begin::Root-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Page-->
+			<div class="page d-flex flex-row flex-column-fluid">
+			
+				<!--begin::Wrapper-->
+				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Post-->
+						<div class="post d-flex flex-column-fluid" id="kt_post">
+							<!--begin::Container-->
+							<div id="kt_content_container" class="container-xxl">
+								<!--begin::Card-->
+								<div class="" id="kt_modal_new_target" tabindex="-1" aria-hidden="true">
+									<!--begin::Modal dialog-->
+									<div class="modal-dialog modal-dialog-centered mw-936px">
+										<!--begin::Modal content-->
+										<div class="modal-content rounded">
+											<!--begin::Modal body-->
+											<div class="modal-body scroll-y">
+												<!--begin:Form-->
+												<form id="kt_modal_new_target_form" class="form" action="#">
+													<!--begin::Heading-->
+													<div class="mb-13 text-center">
+														<!--begin::Title-->
+														<h1 class="mb-3">color contrast checker</h1>
+														<!--end::Title-->
+														<!--begin::Description-->
+														<div class="text-muted fw-bold fs-5">Submit up to 20 colors at a time by pressing Enter or adding a comma after each hex number.</div>
+														<!--end::Description-->
+													</div>
+													<!--end::Heading-->
+												
+													<!--begin::Input group-->
+													<div class="d-flex flex-column mb-8 fv-row">
+														<!--begin::Label-->
+														<label class="d-flex align-items-center fs-6 fw-bold mb-2">
+															<span>Colors</span>
+														</label>
+														<!--end::Label-->
+														<input class="form-control form-control-solid" id="color_tag" placeholder="Add hex numbers" value="" name="tags" />
+														<div class="fs-7 fw-bold text-muted">Submit up to 20 colors at a time by pressing Enter or adding a comma after each hex number.</div>
+													</div>
+													<!--end::Input group-->
+													<!--begin::Actions-->
+													<div class="">
+														<button type="button" id="kt_modal_new_target_submit" class="btn btn-primary btn-submit disabled">Submit</button>
+														<button type="button" id="tag_clear" class="btn btn-light me-3 disabled">Clear all</button>
+													</div>
+													<!--end::Actions-->
+													<div class="card card-xl-stretch mb-5 mb-xl-8" style="display: none;">
+														<!--begin::Header-->
+														<div class="card-header border-0">
+															<h3 class="card-title align-items-start flex-column">
+															</h3>
+															<div class="card-toolbar" title="">
+																<a href="#" class="btn-active-primary save-pdf" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+																<i class="fa fa-file-pdf ft-24"></i>
+																<!--end::Svg Icon--><span class="ft-14">Save as PDF</span>
+																</a>
+															</div>
+														</div>
+														<!--end::Header-->
+														<!--begin::Body-->
+														<div class=" color-tbl">
+															<div class="card-body py-3">
+																<!--begin::Table container-->
+																<div class="table-responsive">
+																	<!--begin::Table-->
+																	<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+																		<!--begin::Table head-->
+																		<thead>
+																			<tr class="fw-bolder text-muted">
+																				<th class="min-w-145px table_head_h2">Colors</th>
+																				<th class="min-w-285px table_head_h2">Preview</th>
+																				<th class="min-w-160px table_head_h2">Normal Text <i class="icon-xl fas fa-exclamation-circle ft-16" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Normal text: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  At least 16px with regular weight or heavier"></i></th>
+																				<th class="min-w-160px table_head_h2">Large Text <i class="icon-xl fas fa-exclamation-circle ft-16" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Large text: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; At least 18.66px with bold weight or 24px with regular weight"></i></th>
+																				<th class="min-w-160px table_head_h2">Non-text <i class="icon-xl fas fa-exclamation-circle ft-16" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Non-text: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UI components and graphical objects"></i></th>
+																			</tr>
+																		</thead>
+																		<!--end::Table head-->
+																		
+																		<!--begin::Table body-->
+																		<tbody>
+																			
+																		</tbody>
+																		<!--end::Table body-->
+																	</table>
+																	<!--end::Table-->
+																</div>
+																<!--end::Table container-->
+															</div>
+														</div>
+														<!--begin::Body-->
+													</div>
+												</form>
+												<!--end:Form-->
+											</div>
+											<!--end::Modal body-->
+										</div>
+										<!--end::Modal content-->
+									</div>
+									<!--end::Modal dialog-->
+								</div>
+								<!--end::Card-->
+							</div>
+							<!--end::Container-->
+						</div>
+						<!--end::Post-->
+					</div>
+					<!--end::Content-->
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::Root-->
+		<!--begin::Drawers-->
+		<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+			<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+			<span class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+					<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black" />
+					<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black" />
+				</svg>
+			</span>
+			<!--end::Svg Icon-->
+		</div>
+		<!--end::Scrolltop-->
+		<!--end::Main-->
+		<script>var hostUrl = "assets/";</script>
+		<!--begin::Javascript-->
+		<!--begin::Global Javascript Bundle(used by all pages)-->
+		<script src="assets/js/plugins.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src="assets/js/new-target.js"></script>
+		<script src="assets/js/widgets.js"></script>
+		<script src="assets/js/create-app.js"></script>
+		<script src="assets/js/upgrade-plan.js"></script>
+		<script src="assets/js/html2pdf.bundle.min.js"></script>
+		<script src="assets/js/color.js"></script>
+		<!--end::Page Custom Javascript-->
+
+		<script type="text/javascript">
+			var _tt ='';
+			var t_cont = "";
+			var count = 0;
+
+			$('#tag_clear').click(function() {
+				$('.tagify tag').remove();
+			});
+
+			$('.save-pdf').on('click', function() {
+				var element = $('.color-tbl').html();
+				let body = document.body
+				var opt = {
+					margin:       1,
+					pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+					filename:     'colors.pdf',
+					image:        { type: 'jpeg', quality: 1 },
+					html2canvas:  { scale: 1 },
+					jsPDF:        { unit: 'in', format: 'a4', orientation: 'landscape' }
+					};
+
+					// New Promise-based usage:
+					html2pdf().set(opt).from(element).save();
+			});
+
+			function checkSubmit()
+			{
+				// let count = $('.tagify .tagify__tag').get().length;
+				console.log(count);
+				if (count > 0) {
+					$('#tag_clear').removeClass('disabled');
+				}
+				else {
+					$('#tag_clear').addClass('disabled');
+				}
+				if (count >= 2) {
+					$('#kt_modal_new_target_submit').removeClass('disabled');
+				}
+				else {
+					$('#kt_modal_new_target_submit').addClass('disabled');
+				}
+			}
+			
+			$('.btn-submit').on('click', function() {
+				var children = $('.tagify .tagify__tag').get();
+				var clone = $('color-list-templ').clone();
+				// clone.attr()
+				$('color-tbl tbody').html(clone.html());
+				// console.log('here', children[0].getAttribute('title'));
+			});
+
+
+			$('#kt_modal_new_target_submit').click(function() {
+				$('.card').attr('style', '');
+				$('table .color-list-templ').remove();
+
+				var colors = [];
+
+				for(var i=0; i<$('.tagify tag').length; i++) {
+					colors[i] = $('.tagify tag')[i].title.toUpperCase();
+				}
+
+				for(var i=0; i<colors.length; i++) {
+					for(var j=i+1; j<colors.length; j++) {
+						make_tr(colors[i], colors[j]);
+						make_tr(colors[j], colors[i]);
+					}
+				}
+			});
+		
+			$('#kt_modal_new_target_form').click(function(e){
+				var color_val = eval($("#color_tag").val())
+				if (!color_val || color_val.length == 0 || color_val[0]['value'].length < 6) {
+
+                	$(".tagify__input").focus()
+              	}
+				// e.preventDefault();
+				// e.stopPropagation();
+				// return false;
+			});
+			function make_tr(foreground_color, background_color) {
+				// console.log(hexToRgb(foreground_color).r);
+				var fg_r = hexToRgb(foreground_color).r;
+				var fg_g = hexToRgb(foreground_color).g;
+				var fg_b = hexToRgb(foreground_color).b;
+
+				var fg = `rgb(${fg_r}, ${fg_g}, ${fg_b})`;
+				var fg_color = new Color(fg);
+				// console.log(fg_color);
+
+				var bg_r = hexToRgb(background_color).r;
+				var bg_g = hexToRgb(background_color).g;
+				var bg_b = hexToRgb(background_color).b;
+
+				var bg = `rgb(${bg_r}, ${bg_g}, ${bg_b})`;
+				var bg_color = new Color(bg);
+
+				let _con =bg_color.contrast(fg_color).ratio;
+
+				var tr = '';
+				tr += '<tr class="color-list-templ">';
+				tr += '<td>';
+				tr += '<div class="d-flex align-items-center">';
+				tr += '<div class="border border-gray-300 border-dashed rounded border-0 min-w-80px mb-3">';
+				tr += '<div class="ft-20 fw-bolder text-gray-700 color-foreground">' + foreground_color + '</div>';
+				tr += '<div class="fw-bold text-gray-400 ft-14">foreground color</div>';
+				tr += '<div class="ft-20 fw-bolder text-gray-700 color-background">' + background_color + '</div>';
+				tr += '<div class="fw-bold text-gray-400 ft-14">background color</div>';
+				tr += '</div>';
+				tr += '</div>';
+				tr += '</td>';
+				tr += '<td>';
+				tr += '<div class="d-flex align-items-center">';
+				tr += '<div class="border border-gray-300 border-dashed rounded mb-3 shape_content" style="background-color:'+ background_color +' !important;">';
+				tr += '<i class="icon-xl fas fa-shapes shape_icon" style="color:'+ foreground_color +' !important"></i>';
+				tr += '</div>';
+				tr += '<div class="border border-gray-300 border-dashed rounded mb-3 shape_content" style="background-color:'+ background_color +' !important;">';
+				tr += '<div class="fw-bold text-gray-400 shape_text"><span style="color:'+ foreground_color +' !important">sample 16px text</span></div>';
+				tr += '</div>';
+				tr += '</div>';
+				tr += '</td>';
+				tr += '<td>';
+				tr += '<div class="d-flex flex-column w-100 me-2">';
+				tr += '<div class="colors_chips">';
+				tr += '<ul class="list">';
+				tr += `<li class=${_con > 4.5 ? "success": "error"}><a href="javascript: remove(2)" class=${_con > 4.5 ? "success": "error"}><i class="icon-xl fas ${_con > 4.5 ? "fa-check": "fa-times"} color-white"></i></a><span>AAA - 4.5:1</span></li>`;
+				tr += `<li class=${_con > 7 ? "success": "error"}><a href="javascript: remove(2)" class=${_con > 7 ? "success": "error"}><i class="icon-xl fas ${_con > 7 ? "fa-check": "fa-times"} color-white"></i></a><span>AAA - 7:1</span></li>`;
+				tr += '</ul>';
+				tr += '</div>';	
+				tr += '</div>';
+				tr += '</td>';
+				tr += '<td>';
+				tr += '<div class="d-flex flex-column w-100 me-2">';
+				tr += '<div class="colors_chips">';
+				tr += '<ul class="list">';
+				tr += `<li class=${_con > 4.5 ? "success": "error"}><a href="javascript: remove(2)" class=${_con > 4.5 ? "success": "error"}><i class="icon-xl fas ${_con > 4.5 ? "fa-check": "fa-times"} color-white"></i></a><span>AAA - 4.5:1</span></li>`;
+				tr += `<li class=${_con > 7 ? "success": "error"}><a href="javascript: remove(2)" class=${_con > 7 ? "success": "error"}><i class="icon-xl fas ${_con > 7 ? "fa-check": "fa-times"} color-white"></i></a><span>AAA - 7:1</span></li>`;
+				tr += '</ul>';
+				tr += '</div>';	
+				tr += '</div>';
+				tr += '</td>';
+				tr += '<td>';
+				tr += '<div class="d-flex flex-shrink-0">';
+				tr += '<div class="colors_chips">';
+				tr += '<ul class="list">';
+				tr += `<li class=${_con > 7 ? "success": "error"}><a href="javascript: remove(2)" class=${_con > 7 ? "success": "error"}><i class="icon-xl fas ${_con > 7 ? "fa-check": "fa-times"} color-white"></i></a><span>AAA - 7:1</span></li>`;
+				tr += '</ul>';
+				tr += '</div>';	
+				tr += '</div>';
+				tr += '</td>';
+				tr += '</tr>';
+				$('tbody').append(tr);
+			}
+
+			function hexToRgb(hex) {
+				var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+				return result ? {
+					r: parseInt(result[1], 16),
+					g: parseInt(result[2], 16),
+					b: parseInt(result[3], 16)
+				} : null;
+			}
+		</script>
+		<!--end::Javascript-->
+	</body>
+	<!--end::Body-->
+</html>
