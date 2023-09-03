@@ -195,15 +195,11 @@
 					html2canvas:  { scale: 1 },
 					jsPDF:        { unit: 'in', format: 'a4', orientation: 'landscape' }
 					};
-
-					// New Promise-based usage:
 					html2pdf().set(opt).from(element).save();
 			});
 
 			function checkSubmit()
 			{
-				// let count = $('.tagify .tagify__tag').get().length;
-				console.log(count);
 				if (count > 0) {
 					$('#tag_clear').removeClass('disabled');
 				}
@@ -221,9 +217,7 @@
 			$('.btn-submit').on('click', function() {
 				var children = $('.tagify .tagify__tag').get();
 				var clone = $('color-list-templ').clone();
-				// clone.attr()
 				$('color-tbl tbody').html(clone.html());
-				// console.log('here', children[0].getAttribute('title'));
 			});
 
 

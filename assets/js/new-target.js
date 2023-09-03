@@ -7,9 +7,7 @@ var KTModalNewTarget = function () {
             (i = document.querySelector("#kt_modal_new_target")) && (o = new bootstrap.Modal(i), a = document.querySelector("#kt_modal_new_target_form"), t = document.getElementById("kt_modal_new_target_submit"), e = document.getElementById("kt_modal_new_target_cancel"), new Tagify(a.querySelector('[name="tags"]')).on("change"), $(a.querySelector('[name="due_date"]')).flatpickr({
                 enableTime: !0,
                 dateFormat: "d, M Y, H:i"
-            }), $(a.querySelector('[name="team_assign"]')).on("change", (function () {
-                n.revalidateField("team_assign")
-            })), n = FormValidation.formValidation(a, {
+            }), n = FormValidation.formValidation(a, {
                 fields: {
                     target_title: {
                         validators: {
