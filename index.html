@@ -161,10 +161,10 @@
 		});
 
 		window.jsPDF = window.jspdf.jsPDF;
-		// console.log(window)
+		var form, cache_width, a4 = [595.28, 841.89];
+		console.log(window)
 		$('.save-pdf').on('click', function () {
-			// var element = $('.color-tbl').html();
-			var elementHTML = document.querySelector(".color-tbl");
+			// var elementHTML = $('.color-tbl').html();
 			// let body = document.body
 			// var opt = {
 			// 	margin: 1,
@@ -189,32 +189,80 @@
 			// html2pdf().set(opt).from(element).save();
 
 			// var doc = new jsPDF('p', 'pt', 'a4');
-			var doc = new jsPDF();
+			// var doc = new jsPDF();
+			// var elementHTML = document.querySelector(".color-tbl")
+			// doc.html(elementHTML, {
+			// 	callback: function(doc) {
+			// 		// doc.setFont('fa-solid-900');
+			// 		doc.setFont('Poppins-Medium');			
+			// 		console.log(doc.getFontList());
 
-			doc.html(elementHTML, {
-				callback: function(doc) {
-					// doc.setFont('fa-solid-900');
-					doc.setFont('Poppins-Medium');			
-					console.log(doc.getFontList());
+			// 		// Save the PDF
+			// 		doc.save('colors.pdf');
 
-					// Save the PDF
-					doc.save('colors.pdf');
+			// 		// const pdfDataUri = doc.output('datauristring');
+			// 		// const iframe = document.createElement('iframe');
+			// 		// iframe.src = pdfDataUri;
+			// 		// iframe.width = "100%";
+			// 		// iframe.height = "500px";
+			// 		// document.body.appendChild(iframe);
+			// 	},
+			// 	margin: [10, 10, 10, 10],
+			// 	autoPaging: 'text',
+			// 	x: 0,
+			// 	y: 0,
+			// 	width: 190, //target width in the PDF document
+			// 	windowWidth: 875 //window width in CSS pixels
+			// });
 
-					// const pdfDataUri = doc.output('datauristring');
-					// const iframe = document.createElement('iframe');
-					// iframe.src = pdfDataUri;
-					// iframe.width = "100%";
-					// iframe.height = "500px";
-					// document.body.appendChild(iframe);
-				},
-				margin: [10, 10, 10, 10],
-				autoPaging: 'text',
-				x: 0,
-				y: 0,
-				width: 190, //target width in the PDF document
-				windowWidth: 875 //window width in CSS pixels
+			getCanvas().then(function (canvas) {
+				var img = canvas.toDataURL("image/png"),  
+				doc = new jsPDF({  
+					unit: 'px',  
+					format: 'a4',
+					autoPaging: 'text',
+				});  
+				doc.addImage(img, 'JPEG', 20, 20);  
+				doc.save('colors.pdf');  
+				// form.width(cache_width);  
 			});
+
+			// let jsPdf = new jsPDF('p', 'pt', 'letter');
+			// var htmlElement = document.querySelector(".color-tbl");
+			// // you need to load html2canvas (and dompurify if you pass a string to html)
+			// const opt = {
+			// 	callback: function (jsPdf) {
+			// 		jsPdf.save("Test.pdf");
+			// 		// to open the generated PDF in browser window
+			// 		// window.open(jsPdf.output('bloburl'));
+			// 	},
+			// 	margin: [72, 72, 72, 72],
+			// 	autoPaging: 'text',
+			// 	html2canvas: {
+			// 		allowTaint: true,
+			// 		dpi: 300,
+			// 		letterRendering: true,
+			// 		logging: false,
+			// 		scale: .8
+			// 	}
+			// };
+
+			// jsPdf.html(htmlElement, opt);
 		});
+
+		function getCanvas() {
+			form = $('.color-tbl')[0];
+			// console.log(form)
+			// cache_width = form.width();
+			// form.width((a4[0] * 1.33333) - 80).css('max-width', 'none');  
+			return html2canvas(form, {
+				scale: 0.8,
+				width: 910,
+				height: 1410,
+				imageTimeout: 2000,  
+				removeContainer: true  
+			});  
+		}
 
 		function checkSubmit() {
 			if (count > 0) {
