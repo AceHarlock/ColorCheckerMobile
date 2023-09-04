@@ -4,7 +4,7 @@ var KTModalNewTarget = function () {
     var t, e, n, a, o, i;
     return {
         init: function () {
-            (i = document.querySelector("#kt_modal_new_target")) && (o = new bootstrap.Modal(i), a = document.querySelector("#kt_modal_new_target_form"), t = document.getElementById("kt_modal_new_target_submit"), e = document.getElementById("kt_modal_new_target_cancel"), new Tagify(a.querySelector('[name="tags"]')).on("change"), $(a.querySelector('[name="due_date"]')).flatpickr({
+            (i = document.querySelector("#kt_modal_new_target")) && (o = new bootstrap.Modal(i), a = document.querySelector("#kt_modal_new_target_form"), t = document.getElementById("kt_modal_new_target_submit"), e = document.getElementById("kt_modal_new_target_cancel"), tagify_obj = new Tagify(a.querySelector('[name="tags"]')).on("change"), $(a.querySelector('[name="due_date"]')).flatpickr({
                 enableTime: !0,
                 dateFormat: "d, M Y, H:i"
             }), n = FormValidation.formValidation(a, {
