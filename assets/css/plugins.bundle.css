@@ -5142,7 +5142,7 @@ span.flatpickr-weekday {
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    cursor: pointer;
+    /* cursor: pointer; */
     font: 14px/1 Arial;
     background: 0 0;
     background: var(--tag-remove-btn-bg, none);

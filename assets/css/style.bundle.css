@@ -371,7 +371,7 @@ select {
 }
 
 [role=button] {
-    cursor: pointer
+    /* cursor: pointer */
 }
 
 select {
