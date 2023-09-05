@@ -44,7 +44,7 @@
 													<button type="button" id="kt_modal_new_target_submit"
 														class="btn btn-primary btn-submit disabled">Submit</button>
 													<button type="button" id="tag_clear"
-														class="btn btn-light me-3 disabled">Clear all</button>
+														class="btn btn-light me-3 d-none">Clear all</button>
 												</div>
 												<div class="card card-xl-stretch mb-5 mb-xl-8" style="display: none;">
 													<div class="card-header border-0">
@@ -266,9 +266,9 @@
 
 		function checkSubmit() {
 			if (count > 0) {
-				$('#tag_clear').removeClass('disabled');
+				$('#tag_clear').removeClass('d-none');
 			} else {
-				$('#tag_clear').addClass('disabled');
+				$('#tag_clear').addClass('d-none');
 			}
 			if (count >= 2) {
 				$('#kt_modal_new_target_submit').removeClass('disabled');
@@ -278,7 +278,9 @@
 		}
 
 		$('#tag_clear').on('click', function () {
-			// $('.card.card-xl-stretch').addClass('d-none');
+			$('.card.card-xl-stretch').addClass('d-none');
+			count = 0;
+			checkSubmit();
 		});
 
 		$('.btn-submit').on('click', function () {
