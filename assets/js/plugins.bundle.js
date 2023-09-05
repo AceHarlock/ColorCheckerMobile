@@ -50904,29 +50904,33 @@ function (e, t) {
             const regex = /^(?:#)?([0-9a-fA-F]{6})$/;
             const regex1 = /^([#0-9a-fA-F])$/;
             var t = this.trim(e.target.textContent);
+            
+            keyList.push(e.keyCode);
 
             if (e.key !== "Enter" && e.key !== "Backspace" && e.keyCode !== 32) {
-              if (!e.key.match(regex1)) {
-                e.preventDefault()
-                return false;
-              }
-
-              if (e.key === '#' && t.length > 0) {
-                e.preventDefault()
-                return false;
-              }
-
-              if (t[0] === '#') {
-                if (t.length >= 7) {
+              if (!(keyList[keyList.length - 2] === 17 && e.keyCode === 86)) {
+                if (!e.key.match(regex1)) {
                   e.preventDefault()
                   return false;
                 }
-              } else {
-                if (t.length >= 6) {
+  
+                if (e.key === '#' && t.length > 0) {
                   e.preventDefault()
                   return false;
                 }
-              }              
+  
+                if (t[0] === '#') {
+                  if (t.length >= 7) {
+                    e.preventDefault()
+                    return false;
+                  }
+                } else {
+                  if (t.length >= 6) {
+                    e.preventDefault()
+                    return false;
+                  }
+                }
+              }
             }
 
             if (e.keyCode == 32)

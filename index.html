@@ -155,6 +155,7 @@
 		var _tt = '';
 		var t_cont = "";
 		var count = 0;
+		var keyList = [];
 
 		$('#tag_clear').click(function () {
 			tagify_obj.removeAllTags();
@@ -162,7 +163,6 @@
 
 		window.jsPDF = window.jspdf.jsPDF;
 		var form, cache_width, a4 = [595.28, 841.89];
-		console.log(window)
 		$('.save-pdf').on('click', function () {
 			// var elementHTML = $('.color-tbl').html();
 			// let body = document.body
