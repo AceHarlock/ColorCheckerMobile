@@ -42,7 +42,7 @@
 												</div>
 												<div class="">
 													<button type="button" id="kt_modal_new_target_submit"
-														class="btn btn-primary btn-submit disabled">Submit</button>
+														class="btn btn-primary btn-submit d-none">Submit</button>
 													<button type="button" id="tag_clear"
 														class="btn btn-light me-3 d-none">Clear all</button>
 												</div>
@@ -271,9 +271,9 @@
 				$('#tag_clear').addClass('d-none');
 			}
 			if (count >= 2) {
-				$('#kt_modal_new_target_submit').removeClass('disabled');
+				$('#kt_modal_new_target_submit').removeClass('d-none');
 			} else {
-				$('#kt_modal_new_target_submit').addClass('disabled');
+				$('#kt_modal_new_target_submit').addClass('d-none');
 			}
 		}
 
