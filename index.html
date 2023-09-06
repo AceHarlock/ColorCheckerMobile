@@ -144,14 +144,12 @@
 	<script src="assets/js/widgets.js"></script>
 	<script src="assets/js/create-app.js"></script>
 	<script src="assets/js/upgrade-plan.js"></script>
-	<!-- <script src="assets/js/html2pdf.bundle.min.js"></script> -->
 	<script src="assets/js/html2canvas.js"></script>
 	<script src="assets/js/jspdf.umd.js"></script>
 	<script src="assets/js/fa-solid-900-normal.js"></script>
 	<script src="assets/js/Poppins-Medium-normal.js"></script>
 	<script src="assets/js/color.js"></script>
 	<script type="text/javascript">
-		// import { jsPDF } from "jspdf";
 		var _tt = '';
 		var t_cont = "";
 		var count = 0;
@@ -161,57 +159,6 @@
 		window.jsPDF = window.jspdf.jsPDF;
 		var form, canvas_height;
 		$('.save-pdf').on('click', function () {
-			// var elementHTML = $('.color-tbl').html();
-			// let body = document.body
-			// var opt = {
-			// 	margin: 1,
-			// 	pagebreak: {
-			// 		mode: ['avoid-all', 'css', 'legacy']
-			// 	},
-			// 	filename: 'colors.pdf',
-			// 	image: {
-			// 		type: 'jpeg',
-			// 		quality: 1
-			// 	},
-			// 	// html2canvas: {
-			// 	// 	scale: 1
-			// 	// },
-			// 	html2canvas:  { dpi: 300, letterRendering: true, width: 1700, height: 1920},
-			// 	jsPDF: {
-			// 		unit: 'px',
-			// 		format: 'A4',
-			// 		orientation: 'portrait'
-			// 	}
-			// };
-			// html2pdf().set(opt).from(element).save();
-
-			// var doc = new jsPDF('p', 'pt', 'a4');
-			// var doc = new jsPDF();
-			// var elementHTML = document.querySelector(".color-tbl")
-			// doc.html(elementHTML, {
-			// 	callback: function(doc) {
-			// 		// doc.setFont('fa-solid-900');
-			// 		doc.setFont('Poppins-Medium');			
-			// 		console.log(doc.getFontList());
-
-			// 		// Save the PDF
-			// 		doc.save('colors.pdf');
-
-			// 		// const pdfDataUri = doc.output('datauristring');
-			// 		// const iframe = document.createElement('iframe');
-			// 		// iframe.src = pdfDataUri;
-			// 		// iframe.width = "100%";
-			// 		// iframe.height = "500px";
-			// 		// document.body.appendChild(iframe);
-			// 	},
-			// 	margin: [10, 10, 10, 10],
-			// 	autoPaging: 'text',
-			// 	x: 0,
-			// 	y: 0,
-			// 	width: 190, //target width in the PDF document
-			// 	windowWidth: 875 //window width in CSS pixels
-			// });
-
 			getCanvas().then(function (canvas) {
 				var imgData = canvas.toDataURL("image/png"),  
 				doc = new jsPDF({  
@@ -222,7 +169,7 @@
 
 				var heightLeft = canvas_height;
 				var imgHeight = 1100;
-				var position = 20; // give some top padding to first page
+				var position = 20;
 
 				doc.addImage(imgData, 'PNG', 50, position);
 				// doc.addImage(imgData, 'PNG', 50, position, 0, imgHeight);
@@ -234,38 +181,13 @@
 				// 	doc.addPage();
 				// 	doc.addImage(imgData, 'PNG', 50, position, 0, imgHeight);
 				// 	heightLeft -= imgHeight;
-				// }
-				
+				// }				
 				doc.save('colors.pdf');
 			});
-
-			// let jsPdf = new jsPDF('p', 'pt', 'letter');
-			// var htmlElement = document.querySelector(".color-tbl");
-			// // you need to load html2canvas (and dompurify if you pass a string to html)
-			// const opt = {
-			// 	callback: function (jsPdf) {
-			// 		jsPdf.save("Test.pdf");
-			// 		// to open the generated PDF in browser window
-			// 		// window.open(jsPdf.output('bloburl'));
-			// 	},
-			// 	margin: [72, 72, 72, 72],
-			// 	autoPaging: 'text',
-			// 	html2canvas: {
-			// 		allowTaint: true,
-			// 		dpi: 300,
-			// 		letterRendering: true,
-			// 		logging: false,
-			// 		scale: .8
-			// 	}
-			// };
-
-			// jsPdf.html(htmlElement, opt);
 		});
 
 		function getCanvas() {
 			form = $('.color-tbl')[0];
-			// console.log(form)
-			console.log(form.clientHeight)
 			canvas_height = form.clientHeight;
 			return html2canvas(form, {
 				scale: 0.8,
