@@ -145,54 +145,46 @@
 	<script src="assets/js/create-app.js"></script>
 	<script src="assets/js/upgrade-plan.js"></script>
 	<script src="assets/js/html2canvas.js"></script>
+	<script src="assets/js/html2pdf.bundle.min.js"></script>
 	<script src="assets/js/jspdf.umd.js"></script>
 	<script src="assets/js/fa-solid-900-normal.js"></script>
 	<script src="assets/js/Poppins-Medium-normal.js"></script>
 	<script src="assets/js/color.js"></script>
+	
 	<script type="text/javascript">
 		var _tt = '';
 		var t_cont = "";
 		var count = 0;
 		var keyList = [];
 		var contentText;
-
+		var _height, _width;
 		window.jsPDF = window.jspdf.jsPDF;
 		var form, canvas_height;
+
 		$('.save-pdf').on('click', function () {
-			getCanvas().then(function (canvas) {
-				var imgData = canvas.toDataURL("image/png"),  
-				doc = new jsPDF({  
-					unit: 'px',
-					format: [510, canvas_height * 510 / 1110],
-					autoPaging: 'text',
-				});
 
-				var heightLeft = canvas_height;
-				var imgHeight = 1100;
-				var position = 20;
-
-				doc.addImage(imgData, 'PNG', 50, position);
-				// doc.addImage(imgData, 'PNG', 50, position, 0, imgHeight);
-				// heightLeft -= imgHeight;
-
-				// while (heightLeft >= 0) {
-				// 	// position += imgHeight; // top padding for other pages
-				// 	position -= 620;
-				// 	doc.addPage();
-				// 	doc.addImage(imgData, 'PNG', 50, position, 0, imgHeight);
-				// 	heightLeft -= imgHeight;
-				// }				
-				doc.save('colors.pdf');
+				var element = $('.color-tbl').html();
+				let body = document.body
+				var opt = {
+					margin:       1,
+					pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+					filename:     'colors.pdf',
+					image:        { type: 'jpeg', quality: 1 },
+					html2canvas:  { scale: 5 },
+					jsPDF:        { unit: 'in', format: 'a4', orientation: 'landscape' }
+					};
+					html2pdf().set(opt).from(element).save();
 			});
-		});
 
 		function getCanvas() {
 			form = $('.color-tbl')[0];
 			canvas_height = form.clientHeight;
+			_height = form.offsetHeight,
+			_width =  form.offsetWidth
 			return html2canvas(form, {
-				scale: 0.8,
-				width: 910,
-				height: canvas_height,
+				scale: 1,
+				width: form.offsetWidth,
+				height: form.offsetHeight,
 				imageTimeout: 2000,  
 				removeContainer: true  
 			});  
