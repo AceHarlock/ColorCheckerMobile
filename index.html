@@ -67,7 +67,7 @@
 															</a>
 														</div>
 													</div>
-													<div class=" color-tbl" style="font-family: 'Poppins';">
+													<div class=" color-tbl">
 														<div class="card-body py-3">
 															<div class="table-responsive">
 																<table
@@ -159,7 +159,7 @@
 		var contentText;
 
 		window.jsPDF = window.jspdf.jsPDF;
-		var form, cache_width, a4 = [595.28, 841.89];
+		var form, canvas_height;
 		$('.save-pdf').on('click', function () {
 			// var elementHTML = $('.color-tbl').html();
 			// let body = document.body
@@ -213,15 +213,30 @@
 			// });
 
 			getCanvas().then(function (canvas) {
-				var img = canvas.toDataURL("image/png"),  
+				var imgData = canvas.toDataURL("image/png"),  
 				doc = new jsPDF({  
-					unit: 'px',  
-					format: 'a4',
+					unit: 'px',
+					format: [510, canvas_height * 510 / 1110],
 					autoPaging: 'text',
-				});  
-				doc.addImage(img, 'JPEG', 20, 20);  
-				doc.save('colors.pdf');  
-				// form.width(cache_width);  
+				});
+
+				var heightLeft = canvas_height;
+				var imgHeight = 1100;
+				var position = 20; // give some top padding to first page
+
+				doc.addImage(imgData, 'PNG', 50, position);
+				// doc.addImage(imgData, 'PNG', 50, position, 0, imgHeight);
+				// heightLeft -= imgHeight;
+
+				// while (heightLeft >= 0) {
+				// 	// position += imgHeight; // top padding for other pages
+				// 	position -= 620;
+				// 	doc.addPage();
+				// 	doc.addImage(imgData, 'PNG', 50, position, 0, imgHeight);
+				// 	heightLeft -= imgHeight;
+				// }
+				
+				doc.save('colors.pdf');
 			});
 
 			// let jsPdf = new jsPDF('p', 'pt', 'letter');
@@ -250,12 +265,12 @@
 		function getCanvas() {
 			form = $('.color-tbl')[0];
 			// console.log(form)
-			// cache_width = form.width();
-			// form.width((a4[0] * 1.33333) - 80).css('max-width', 'none');  
+			console.log(form.clientHeight)
+			canvas_height = form.clientHeight;
 			return html2canvas(form, {
 				scale: 0.8,
 				width: 910,
-				height: 1410,
+				height: canvas_height,
 				imageTimeout: 2000,  
 				removeContainer: true  
 			});  
