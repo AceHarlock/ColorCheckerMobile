@@ -50904,10 +50904,10 @@ function (e, t) {
             const regex = /^(?:#)?([0-9a-fA-F]{6})$/;
             const regex1 = /^([#0-9a-fA-F])$/;
             var t = this.trim(e.target.textContent);
-            
+
             keyList.push(e.keyCode);
 
-            if (e.key !== "Enter" && e.key !== "Backspace" && e.keyCode !== 32) {
+            if (e.key !== "Enter" && e.key !== "Backspace" && e.keyCode !== 32 && e.keyCode !== 36 && e.keyCode !== 37 && e.keyCode !== 39 && e.keyCode !== 35) {
               if (!(keyList[keyList.length - 2] === 17 && e.keyCode === 86)) {
                 if (!e.key.match(regex1)) {
                   e.preventDefault()
@@ -50938,6 +50938,7 @@ function (e, t) {
               if (this.state.dropdown.visible || 229 == e.keyCode) return;
               if (t[0] !== '#') t = '#' + t;
               count++;
+              contentText = '';
               e.preventDefault(), setTimeout((() => {
                 if (t.match(regex) && count < 20) {
                   this.state.actions.selectOption || this.addTags(t, !0)
@@ -51016,6 +51017,7 @@ function (e, t) {
                 
                 if (t[0] !== '#') t = '#' + t;
                 count++;
+                contentText = '';
                 e.preventDefault(), setTimeout((() => {
                   if (t.match(regex) && count < 20) {
                     this.state.actions.selectOption || this.addTags(t, !0)
@@ -51033,6 +51035,7 @@ function (e, t) {
                 value: t,
                 inputElm: this.DOM.input
               };
+            contentText = t;
             i.isValid = this.validateTag({
               value: t
             }), this.state.inputText != t && (this.input.set.call(this, t, !1), -1 != t.search(this.settings.delimiters) ? this.addTags(t) && this.input.set.call(this) : this.settings.dropdown.enabled >= 0 && this.dropdown[n ? "show" : "hide"](t), this.trigger("input", i))

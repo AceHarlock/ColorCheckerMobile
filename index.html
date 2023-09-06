@@ -156,6 +156,7 @@
 		var t_cont = "";
 		var count = 0;
 		var keyList = [];
+		var contentText;
 
 		window.jsPDF = window.jspdf.jsPDF;
 		var form, cache_width, a4 = [595.28, 841.89];
@@ -287,7 +288,6 @@
 			$('.card.card-xl-stretch').removeClass('d-none');
 		});
 
-
 		$('#kt_modal_new_target_submit').click(function () {
 			$('.card').attr('style', '');
 			$('table .color-list-templ').remove();
@@ -306,14 +306,19 @@
 			}
 		});
 
-		$('#kt_modal_new_target_form').click(function (e) {
-			// console.log("here");
-			// e.preventDefault();
-			$(".tagify").addClass('tagify--focus');
-			var color_val = eval($("#color_tag").val())
-			if (!color_val || color_val.length == 0 || color_val[0]['value'].length < 6) {
-
+		$('body').on('click', function() {
+			if ( contentText ) {
+				$(".tagify__input").text(contentText)
 				$(".tagify__input").focus()
+				let element = $(".tagify__input")[0];
+				let range = document.createRange();
+				let node = $(".tagify__input")[0];		
+				range.setStart(node.childNodes[0], contentText.length);
+				let sel = window.getSelection();
+				range.collapse(true);
+				sel.removeAllRanges();
+				sel.addRange(range);
+				element.focus();   	
 			}
 		});
 
