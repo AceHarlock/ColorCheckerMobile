@@ -50937,6 +50937,7 @@ function (e, t) {
             {
               if (this.state.dropdown.visible || 229 == e.keyCode) return;
               if (t[0] !== '#') t = '#' + t;
+              count++;
               e.preventDefault(), setTimeout((() => {
                 if (t.match(regex) && count < 20) {
                   this.state.actions.selectOption || this.addTags(t, !0)
@@ -51014,6 +51015,7 @@ function (e, t) {
                 if (this.state.dropdown.visible || 229 == e.keyCode) return;
                 
                 if (t[0] !== '#') t = '#' + t;
+                count++;
                 e.preventDefault(), setTimeout((() => {
                   if (t.match(regex) && count < 20) {
                     this.state.actions.selectOption || this.addTags(t, !0)
@@ -51658,7 +51660,6 @@ function (e, t) {
         var i = [],
           a = this.settings,
           r = document.createDocumentFragment();
-        count++;
         return e && 0 != e.length ? (e = this.normalizeTags(e), "mix" == a.mode ? this.addMixTags(e) : ("select" == a.mode && (t = !1), this.DOM.input.removeAttribute("style"), e.forEach((e => {
           var t, o = {},
             s = Object.assign({}, e, {

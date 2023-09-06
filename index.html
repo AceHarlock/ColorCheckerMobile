@@ -157,10 +157,6 @@
 		var count = 0;
 		var keyList = [];
 
-		$('#tag_clear').click(function () {
-			tagify_obj.removeAllTags();
-		});
-
 		window.jsPDF = window.jspdf.jsPDF;
 		var form, cache_width, a4 = [595.28, 841.89];
 		$('.save-pdf').on('click', function () {
@@ -279,6 +275,7 @@
 
 		$('#tag_clear').on('click', function () {
 			$('.card.card-xl-stretch').addClass('d-none');
+			tagify_obj.removeAllTags();
 			count = 0;
 			checkSubmit();
 		});
@@ -310,6 +307,9 @@
 		});
 
 		$('#kt_modal_new_target_form').click(function (e) {
+			// console.log("here");
+			// e.preventDefault();
+			$(".tagify").addClass('tagify--focus');
 			var color_val = eval($("#color_tag").val())
 			if (!color_val || color_val.length == 0 || color_val[0]['value'].length < 6) {
 
