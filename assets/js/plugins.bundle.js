@@ -50937,10 +50937,10 @@ function (e, t) {
             {
               if (this.state.dropdown.visible || 229 == e.keyCode) return;
               if (t[0] !== '#') t = '#' + t;
-              count++;
               contentText = '';
               e.preventDefault(), setTimeout((() => {
                 if (t.match(regex) && count < 20) {
+                  count++;
                   this.state.actions.selectOption || this.addTags(t, !0)
                 }
               }))
@@ -51016,10 +51016,10 @@ function (e, t) {
                 if (this.state.dropdown.visible || 229 == e.keyCode) return;
                 
                 if (t[0] !== '#') t = '#' + t;
-                count++;
                 contentText = '';
                 e.preventDefault(), setTimeout((() => {
                   if (t.match(regex) && count < 20) {
+                    count++;
                     this.state.actions.selectOption || this.addTags(t, !0)
                   }
                 }))

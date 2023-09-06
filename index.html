@@ -138,7 +138,7 @@
 		var hostUrl = "assets/";
 		var tagify_obj;
 	</script>
-	<script src="assets/js/plugins.bundle.js?v=1.01"></script>
+	<script src="assets/js/plugins.bundle.js?v=1.02"></script>
 	<script src="assets/js/scripts.bundle.js?v=1.01"></script>
 	<script src="assets/js/new-target.js"></script>
 	<script src="assets/js/widgets.js"></script>
@@ -277,6 +277,7 @@
 		}
 
 		function checkSubmit() {
+			console.log(count);
 			if (count > 0) {
 				$('#tag_clear').removeClass('d-none');
 			} else {
