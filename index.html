@@ -148,7 +148,7 @@
 		var hostUrl = "assets/";
 		var tagify_obj;
 	</script>
-	<script src="assets/js/plugins.bundle.js?v=1.02"></script>
+	<script src="assets/js/plugins.bundle.js?v=1.03"></script>
 	<script src="assets/js/scripts.bundle.js?v=1.01"></script>
 	<script src="assets/js/new-target.js"></script>
 	<script src="assets/js/widgets.js"></script>
@@ -245,21 +245,21 @@
 			}
 		});
 
-		$('body').on('click', function() {
-			if ( contentText ) {
-				$(".tagify__input").text(contentText)
-				$(".tagify__input").focus()
-				let element = $(".tagify__input")[0];
-				let range = document.createRange();
-				let node = $(".tagify__input")[0];		
-				range.setStart(node.childNodes[0], contentText.length);
-				let sel = window.getSelection();
-				range.collapse(true);
-				sel.removeAllRanges();
-				sel.addRange(range);
-				element.focus();   	
-			}
-		});
+		// $('body').on('click', function() {
+		// 	if ( contentText ) {
+		// 		$(".tagify__input").text(contentText)
+		// 		$(".tagify__input").focus()
+		// 		let element = $(".tagify__input")[0];
+		// 		let range = document.createRange();
+		// 		let node = $(".tagify__input")[0];		
+		// 		range.setStart(node.childNodes[0], contentText.length);
+		// 		let sel = window.getSelection();
+		// 		range.collapse(true);
+		// 		sel.removeAllRanges();
+		// 		sel.addRange(range);
+		// 		element.focus();   	
+		// 	}
+		// });
 
 		function make_tr(foreground_color, background_color) {
 			var fg_r = hexToRgb(foreground_color).r;

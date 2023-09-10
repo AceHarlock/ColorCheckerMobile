@@ -50884,9 +50884,23 @@ function (e, t) {
             }
             if (!o && !s)
               if (this.state.hasFocus = "focus" == i && +new Date, this.toggleFocusClass(this.state.hasFocus), "mix" != n.mode) {
-                if ("focus" == i) return this.trigger("focus", r), void(0 !== n.dropdown.enabled && n.userInput || this.dropdown.show());
-                "blur" == i && (this.trigger("blur", r), this.loading(!1), "select" == this.settings.mode && l && (t = ""), ("select" == this.settings.mode && t ? !this.value.length || this.value[0].value != t : t && !this.state.actions.selectOption && n.addTagOnBlur) && this.addTags(t, !0), "select" != this.settings.mode || t || this.removeTags()), this.DOM.input.removeAttribute("style"), this.dropdown.hide()
+                if ("focus" == i) 
+                  return this.trigger("focus", r), void(0 !== n.dropdown.enabled && n.userInput || this.dropdown.show());
+                "blur" == i && (this.trigger("blur", r), this.loading(!1), "select" == this.settings.mode && l, ("select" == this.settings.mode && t ? !this.value.length || this.value[0].value != t : t && !this.state.actions.selectOption && n.addTagOnBlur) && this.addTags(t, !0), "select" != this.settings.mode || t || this.removeTags()), this.DOM.input.removeAttribute("style"), this.dropdown.hide()
               } else "focus" == i ? this.trigger("focus", r) : "blur" == e.type && (this.trigger("blur", r), this.loading(!1), this.dropdown.hide(), this.state.dropdown.visible = void 0, this.setStateSelection())
+            if ( contentText ) {
+              $(".tagify__input").text(contentText)
+              $(".tagify__input").focus()
+              let element = $(".tagify__input")[0];
+              let range = document.createRange();
+              let node = $(".tagify__input")[0];		
+              range.setStart(node.childNodes[0], contentText.length);
+              let sel = window.getSelection();
+              range.collapse(true);
+              sel.removeAllRanges();
+              sel.addRange(range);
+              element.focus();   	
+            }
           },
           onWindowKeyDown(e) {
             var t, n = document.activeElement;
@@ -51035,6 +51049,11 @@ function (e, t) {
                 value: t,
                 inputElm: this.DOM.input
               };
+            
+            // if (t[0] === '#') {
+            //   t = t.slice(1)
+            // }
+            // console.log('input = ', t)
             contentText = t;
             i.isValid = this.validateTag({
               value: t
@@ -51106,6 +51125,7 @@ function (e, t) {
               pastedText: n,
               clipboardData: t
             }).then((t => {
+              if (n[0] === '#') n = n.slice(1)
               void 0 === t && (t = n), t && (this.injectAtCaret(t, window.getSelection().getRangeAt(0)), "mix" == this.settings.mode ? this.events.callbacks.onMixTagsInput.call(this, e) : this.settings.pasteAsTags ? this.addTags(t, !0) : this.state.inputText = t)
             })).catch((e => e)))
           },
@@ -51663,7 +51683,9 @@ function (e, t) {
         var i = [],
           a = this.settings,
           r = document.createDocumentFragment();
-        return e && 0 != e.length ? (e = this.normalizeTags(e), "mix" == a.mode ? this.addMixTags(e) : ("select" == a.mode && (t = !1), this.DOM.input.removeAttribute("style"), e.forEach((e => {
+
+        return e && 0 != e.length ? 
+        (e = this.normalizeTags(e), "mix" == a.mode ? this.addMixTags(e) : ("select" == a.mode && (t = !1), this.DOM.input.removeAttribute("style"), e.forEach((e => {
           var t, o = {},
             s = Object.assign({}, e, {
               value: e.value + ""
@@ -51674,7 +51696,8 @@ function (e, t) {
               __preInvalidData: s
             }), e.__isValid == this.TEXTS.duplicate && this.flashTag(this.getTagElmByValue(e.value))
           }
-          if (e.readonly && (o["aria-readonly"] = !0), t = this.createTagElem(e, o), i.push(t), "select" == a.mode) return this.selectTag(t, e);
+          if (e.readonly && (o["aria-readonly"] = !0), t = this.createTagElem(e, o), i.push(t), "select" == a.mode) 
+            return this.selectTag(t, e);
           r.appendChild(t), e.__isValid && !0 === e.__isValid ? (this.value.push(e), this.trigger("add", {
             tag: t,
             index: this.value.length - 1,
@@ -51684,7 +51707,8 @@ function (e, t) {
             index: this.value.length,
             tag: t,
             message: e.__isValid
-          }), a.keepInvalidTags || setTimeout((() => this.removeTags(t, !0)), 1e3)), this.dropdown.position()
+          }), a.keepInvalidTags || setTimeout((() => this.removeTags(t, !0)), 1e3)), 
+          this.dropdown.position()
         })), this.appendTag(r), this.update(), checkSubmit(), e.length && t && this.input.set.call(this), this.dropdown.refilter(), i)) : ("select" == a.mode && this.removeAllTags(), i)
       },
       addMixTags(e) {
