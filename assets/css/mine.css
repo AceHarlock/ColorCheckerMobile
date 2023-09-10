@@ -6,3 +6,7 @@
 .info-ico {
     margin-top: -6px;
 }
+
+.tooltip-inner {
+    white-space: pre-line !important;
+}
