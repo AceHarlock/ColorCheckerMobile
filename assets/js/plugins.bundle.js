@@ -51767,6 +51767,7 @@ function (e, t) {
       removeTags(e, t, n) {
         var i;
         count--;
+        if (count < 0)  count = 0
         checkSubmit();
         e = e && e instanceof HTMLElement ? [e] : e instanceof Array ? e : e ? [e] : [this.getLastTag()], i = e.reduce(((e, t) => (t && "string" == typeof t && (t = this.getTagElmByValue(t)), t && this.tagData(t) && e.push({
           node: t,
