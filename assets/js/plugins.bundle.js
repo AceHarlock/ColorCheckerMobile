@@ -50956,6 +50956,7 @@ function (e, t) {
                 if (t.match(regex) && count < 20) {
                   count++;
                   this.state.actions.selectOption || this.addTags(t, !0)
+                  checkSubmit()
                 }
               }))
             }
@@ -50997,7 +50998,7 @@ function (e, t) {
                         index: t,
                         data: n
                       })
-                      checkSubmit();
+                      // checkSubmit();
                     })).filter((e => e))
                   }), 20)
               }
@@ -51035,6 +51036,7 @@ function (e, t) {
                   if (t.match(regex) && count < 20) {
                     count++;
                     this.state.actions.selectOption || this.addTags(t, !0)
+                    checkSubmit()
                   }
                 }))
             }
@@ -51049,11 +51051,7 @@ function (e, t) {
                 value: t,
                 inputElm: this.DOM.input
               };
-            
-            // if (t[0] === '#') {
-            //   t = t.slice(1)
-            // }
-            // console.log('input = ', t)
+          
             contentText = t;
             i.isValid = this.validateTag({
               value: t
@@ -51114,7 +51112,7 @@ function (e, t) {
                 originalEvent: this.cloneEvent(e)
               }), void(1 !== t.editTags && 1 !== t.editTags.clicks || this.events.callbacks.onDoubleClickScope.call(this, e))) : void(e.target == this.DOM.input && ("mix" == t.mode && this.fixFirefoxLastTagNoCaret(), i > 500) ? this.state.dropdown.visible ? this.dropdown.hide() : 0 === t.dropdown.enabled && "mix" != t.mode && this.dropdown.show() : "select" == t.mode && !this.state.dropdown.visible && this.dropdown.show());
               this.removeTags(e.target.parentNode)
-              checkSubmit();
+              // checkSubmit();
             } else this.state.hasFocus || this.DOM.input.focus()
           },
           onPaste(e) {
@@ -51709,7 +51707,7 @@ function (e, t) {
             message: e.__isValid
           }), a.keepInvalidTags || setTimeout((() => this.removeTags(t, !0)), 1e3)), 
           this.dropdown.position()
-        })), this.appendTag(r), this.update(), checkSubmit(), e.length && t && this.input.set.call(this), this.dropdown.refilter(), i)) : ("select" == a.mode && this.removeAllTags(), i)
+        })), this.appendTag(r), this.update(), e.length && t && this.input.set.call(this), this.dropdown.refilter(), i)) : ("select" == a.mode && this.removeAllTags(), i)
       },
       addMixTags(e) {
         if ((e = this.normalizeTags(e))[0].prefix || this.state.tag) return this.prefixedTextToTag(e[0]);
