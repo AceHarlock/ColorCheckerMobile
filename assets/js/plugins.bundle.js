@@ -28430,6 +28430,29 @@ function (e) {
             return this.plugins[e]
           }
         }, {
+          key: "updateFieldStatus",
+          value: function (e, t, n) {
+            var i = this,
+              a = this.elements[e],
+              r = a[0].getAttribute("type");
+            if (("radio" === r || "checkbox" === r ? [a[0]] : a).forEach((function (a) {
+                return i.updateElementStatus(e, a, t, n)
+              })), !n) switch (t) {
+              case "NotValidated":
+                this.emit("core.field.notvalidated", e), this.results.delete(e);
+                break;
+              case "Validating":
+                this.emit("core.field.validating", e), this.results.delete(e);
+                break;
+              case "Valid":
+                this.emit("core.field.valid", e), this.results.set(e, "Valid");
+                break;
+              case "Invalid":
+                this.emit("core.field.invalid", e), this.results.set(e, "Invalid")
+            }
+            return this
+          }
+        }, {
           key: "updateElementStatus",
           value: function (e, t, n, i) {
             var a = this,
@@ -50886,11 +50909,9 @@ function (e, t) {
               if (this.state.hasFocus = "focus" == i && +new Date, this.toggleFocusClass(this.state.hasFocus), "mix" != n.mode) {
                 if ("focus" == i) 
                   return this.trigger("focus", r), void(0 !== n.dropdown.enabled && n.userInput || this.dropdown.show());
-                "blur" == i && (this.trigger("blur", r), this.loading(!1), "select" == this.settings.mode && l, ("select" == this.settings.mode && t ? !this.value.length || this.value[0].value != t : t && !this.state.actions.selectOption && n.addTagOnBlur) && this.addTags(t, !0), "select" != this.settings.mode || t || this.removeTags()), this.DOM.input.removeAttribute("style"), this.dropdown.hide()
+                "blur" == i && (this.trigger("blur", r), this.loading(!1), "select" == this.settings.mode && l, ("select" == this.settings.mode && t ? !this.value.length || this.value[0].value != t : t && !this.state.actions.selectOption && n.addTagOnBlur), "select" != this.settings.mode || t || this.removeTags()), this.DOM.input.removeAttribute("style"), this.dropdown.hide()
               } else "focus" == i ? this.trigger("focus", r) : "blur" == e.type && (this.trigger("blur", r), this.loading(!1), this.dropdown.hide(), this.state.dropdown.visible = void 0, this.setStateSelection())
             if ( contentText ) {
-              $(".tagify__input").text(contentText)
-              $(".tagify__input").focus()
               let element = $(".tagify__input")[0];
               let range = document.createRange();
               let node = $(".tagify__input")[0];		
@@ -51051,11 +51072,11 @@ function (e, t) {
                 value: t,
                 inputElm: this.DOM.input
               };
-          
+            
             contentText = t;
             i.isValid = this.validateTag({
               value: t
-            }), this.state.inputText != t && (this.input.set.call(this, t, !1), -1 != t.search(this.settings.delimiters) ? this.addTags(t) && this.input.set.call(this) : this.settings.dropdown.enabled >= 0 && this.dropdown[n ? "show" : "hide"](t), this.trigger("input", i))
+            }), this.state.inputText != t && (this.input.set.call(this, t, !1), -1 != t.search(this.settings.delimiters) ? this.input.set.call(this) : this.settings.dropdown.enabled >= 0 && this.dropdown[n ? "show" : "hide"](t), this.trigger("input", i))
           },
           onMixTagsInput(e) {
             var t, n, i, a, r, o, s, l, u = this.settings,
@@ -51116,6 +51137,7 @@ function (e, t) {
             } else this.state.hasFocus || this.DOM.input.focus()
           },
           onPaste(e) {
+            e.preventDefault()
             var t, n, i = this.settings;
             if ("select" == i.mode && i.enforceWhitelist || !i.userInput) return !1;
             i.readonly || (t = e.clipboardData || window.clipboardData, n = t.getData("Text"), i.hooks.beforePaste(e, {
@@ -51123,8 +51145,7 @@ function (e, t) {
               pastedText: n,
               clipboardData: t
             }).then((t => {
-              if (n[0] === '#') n = n.slice(1)
-              void 0 === t && (t = n), t && (this.injectAtCaret(t, window.getSelection().getRangeAt(0)), "mix" == this.settings.mode ? this.events.callbacks.onMixTagsInput.call(this, e) : this.settings.pasteAsTags ? this.addTags(t, !0) : this.state.inputText = t)
+              void 0 === t && (t = n), t && (this.injectAtCaret(t, window.getSelection().getRangeAt(0)), "mix" == this.settings.mode ? this.events.callbacks.onMixTagsInput.call(this, e) : this.state.inputText = t)
             })).catch((e => e)))
           },
           onEditTagInput(e, t) {
@@ -51694,9 +51715,13 @@ function (e, t) {
               __preInvalidData: s
             }), e.__isValid == this.TEXTS.duplicate && this.flashTag(this.getTagElmByValue(e.value))
           }
-          if (e.readonly && (o["aria-readonly"] = !0), t = this.createTagElem(e, o), i.push(t), "select" == a.mode) 
+          if (e.readonly && (o["aria-readonly"] = !0), t = this.createTagElem(e, o), i.push(t), "select" == a.mode) {
             return this.selectTag(t, e);
-          r.appendChild(t), e.__isValid && !0 === e.__isValid ? (this.value.push(e), this.trigger("add", {
+          }
+
+          r.appendChild(t);
+
+          e.__isValid && !0 === e.__isValid ? (this.value.push(e), this.trigger("add", {
             tag: t,
             index: this.value.length - 1,
             data: e
@@ -51735,9 +51760,9 @@ function (e, t) {
         })), t
       },
       appendTag(e) {
-        if (t_cont.length < 7) {
-          return false;
-        }
+        // if (t_cont.length > 7) {
+        //   return false;
+        // }
 
         var t = this.DOM,
           n = t.scope.lastElementChild;
