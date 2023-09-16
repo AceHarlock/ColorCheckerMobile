@@ -50939,11 +50939,11 @@ function (e, t) {
             const regex = /^(?:#)?([0-9a-fA-F]{6})$/;
             const regex1 = /^([#0-9a-fA-F])$/;
             var t = this.trim(e.target.textContent);
-
-            keyList.push(e.keyCode);
+            let keyCode = e.keyCode || e.which;
+            // keyList.push(e.keyCode);
 
             if (e.key !== "Enter" && e.key !== "Backspace" && e.keyCode !== 32 && e.keyCode !== 36 && e.keyCode !== 37 && e.keyCode !== 39 && e.keyCode !== 35) {
-              if (!(keyList[keyList.length - 2] === 17 && e.keyCode === 86)) {
+              if (!((e.ctrlKey || e.metaKey) && keyCode === 86)) {
                 if (!e.key.match(regex1)) {
                   e.preventDefault()
                   return false;
